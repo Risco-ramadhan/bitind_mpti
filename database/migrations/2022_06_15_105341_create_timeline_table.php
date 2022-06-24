@@ -13,9 +13,9 @@ class CreateTimelineTable extends Migration
      */
     public function up()
     {
-        Schema::create('timeline', function (Blueprint $table) {
+        Schema::create('timelines', function (Blueprint $table) {
             $table->id();
-            $table->integer('transactionid');
+            $table->integer('id_transaction');
             $table->enum('status_timeline', ['prepare', 'building', 'revision', 'finish']);
             $table->enum('revision', ['1', '3', '5']);
             $table->timestamps();

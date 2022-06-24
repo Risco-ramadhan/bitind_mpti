@@ -13,14 +13,15 @@ class CreateOrderSectionTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_section', function (Blueprint $table) {
+        Schema::create('order_sections', function (Blueprint $table) {
             $table->id();
+            $table->integer('userid');
             $table->integer('id_product');
             $table->string('domain', 20);
-            $table->string('colour', 15);
-            $table->string('url_reference', 20);
-            $table->binary('image_reference');
-            $table->string('bussiness_category', 30);
+            $table->string('color', 15);
+            $table->string('url_reference', 150);
+            $table->string('image_reference');
+            $table->string('bussiness_category', 80);
             $table->text('description_detail');
             $table->timestamps();
         });

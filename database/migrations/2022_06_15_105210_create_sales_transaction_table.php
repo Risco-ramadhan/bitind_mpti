@@ -13,9 +13,8 @@ class CreateSalesTransactionTable extends Migration
      */
     public function up()
     {
-        Schema::create('sales_transaction', function (Blueprint $table) {
+        Schema::create('sales_transactions', function (Blueprint $table) {
             $table->id();
-            $table->integer('userid');
             $table->integer('orderid');
             $table->boolean('status_pembayaran');
             $table->boolean('status_product');
