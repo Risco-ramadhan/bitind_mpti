@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(
     [
         'middleware' => 'api',
-        'namespace'  => 'App\Http\Controllers',
+        'namespace'  => 'App\Http\Controllers/api_v1',
         'prefix'     => 'auth',
     ],
     function ($router) {
