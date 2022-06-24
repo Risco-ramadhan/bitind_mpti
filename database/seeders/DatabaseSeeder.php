@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Country;
 use App\Models\OrderSection;
 use App\Models\Product;
+use App\Models\Revision;
 use App\Models\SalesTransaction;
 use App\Models\Timeline;
 use App\Models\User;
@@ -408,5 +409,7 @@ class DatabaseSeeder extends Seeder
         SalesTransaction::insert($salestransaction);
 
         Timeline::factory(10)->create();
+
+        Revision::factory(10)->create();
     }
 }

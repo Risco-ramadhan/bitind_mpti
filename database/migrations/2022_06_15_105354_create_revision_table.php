@@ -13,11 +13,11 @@ class CreateRevisionTable extends Migration
      */
     public function up()
     {
-        Schema::create('revision', function (Blueprint $table) {
+        Schema::create('revisions', function (Blueprint $table) {
             $table->id();
             $table->integer('timelineid');
-            $table->string('description_revision');
-            $table->binary('image_revision');
+            $table->text('description_revision');
+            $table->string('image_revision');
             $table->boolean('status_revision');
             $table->timestamps();
         });
