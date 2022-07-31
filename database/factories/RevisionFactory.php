@@ -15,7 +15,7 @@ class RevisionFactory extends Factory
     public function definition()
     {
         return [
-            'timelineid'            => Timeline::all()->shuffle()->id,
+            'timelineid'            => Timeline::all()->random()->id,
             'description_revision'  => $this->faker->text,
             'image_revision'        => '',
             'status_revision'       => $this->faker->boolean($chanceOfGettingTrue = 50)

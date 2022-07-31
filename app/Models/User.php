@@ -2,15 +2,20 @@
 
 namespace App\Models;
 
+use App\Notifications\VerifyEmailCode;
+use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements JWTSubject
+
+
+class User extends Authenticatable implements JWTSubject, MustVerifyEmail
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -25,7 +30,8 @@ class User extends Authenticatable implements JWTSubject
         'id_country',
         'id_city',
         'phone_number',
-        'general_number',
+        'role',
+
     ];
 
     /**
@@ -60,11 +66,25 @@ class User extends Authenticatable implements JWTSubject
     }//end getJWTCustomClaims()
 
 
-    public function todos()
-    {
-        return $this->hasMany(Todo::class, 'created_by', 'id');
 
-    }//end todos()
+    public function generateEmailCode(){
+        $this -> timestamps = false;
+        $this -> email_code_verify = rand(100000,999999);
+        $this -> email_code_expires_at = now()->addMinutes(10);
+        $this -> save();
+    }
+
+    public function resetEmailCode(){
+        $this ->timestamps = false;
+        $this ->email_code_expires = null;
+        $this -> save();
+
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmailCode); 
+    }
 
 
 }//end class

@@ -35,7 +35,10 @@ class UserFactory extends Factory
             'id_country'        => Country::all()->random()->id,
             'id_city'           => City::all()->random()->id,
             'phone_number'      => $this->faker->phoneNumber,
-            'general_number'    => $this->faker->tollFreePhoneNumber,
+            'role'              => 1,
+            // 'general_number'    => $this->faker->tollFreePhoneNumber,
+            'email_code_verify' =>rand(100000,999999),
+            'email_code_expires_at' => now()->addMinutes(10),
 
         // password
             'remember_token'    => Str::random(10),
