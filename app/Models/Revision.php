@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Revision extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'timelineid',
+        'description_revision',
+        'image_revision',
+        'status_revision',
+    ];
 }

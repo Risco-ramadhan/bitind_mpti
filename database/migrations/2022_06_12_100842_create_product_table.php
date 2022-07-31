@@ -21,6 +21,8 @@ class CreateProductTable extends Migration
             $table->double('cost', 8, 2);
             $table->string('tax', 3);
             $table->string('product_image');
+            $table->string('color', 7);
+            $table->string('font_color', 7);
             $table->text('product_description');
             $table->boolean('status');
             $table->timestamps();

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRevisionTable extends Migration
+class CreateImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateRevisionTable extends Migration
      */
     public function up()
     {
-        Schema::create('revisions', function (Blueprint $table) {
-            $table->id();
-            $table->integer('timelineid');
-            $table->text('description_revision');
-            $table->binary('image_revision')->nullable();
-            $table->boolean('status_revision');
+        Schema::create('images', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('order_id')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateRevisionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('revision');
+        Schema::dropIfExists('images');
     }
 }
