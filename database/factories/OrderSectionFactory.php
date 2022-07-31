@@ -13,17 +13,41 @@ class OrderSectionFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(
+        ?string $dir = '/public/assets/tmp',
+        int $width = 640,
+        int $height = 480,
+        ?string $category = null,
+        bool $fullPath = true,
+        bool $randomize = true,
+        ?string $word = null,
+        bool $gray = false,
+        string $format = 'png')
     {
         return [
             'userid'                => User::all()->random()->id,
             'id_product'            => Product::all()->random()->id,
             'domain'                => $this->faker->domainName,
-            'color'                 => $this->faker->hexcolor,
+            'color1'                 => $this->faker->hexcolor,
+            'color2'                 => $this->faker->hexcolor,
+            'color3'                 => $this->faker->hexcolor,
             'url_reference'         => $this->faker->url,
-            'image_reference'       => '',
-            'bussiness_category'    => $this->faker->bs,
+            'image_reference'       => $this->faker->image(null, 360, 360, 'animals', true),
+            'bussiness_name'    => $this->faker->bs,
             'description_detail'    => $this->faker->text,
         ];
+    }
+
+    public function image(  ?string $dir = null,
+                            int $width = 640,
+                            int $height = 480,
+                            ?string $category = null,
+                            bool $fullPath = true,
+                            bool $randomize = true,
+                            ?string $word = null,
+                            bool $gray = false,
+                            string $format = 'png')
+    {
+        # code...
     }
 }

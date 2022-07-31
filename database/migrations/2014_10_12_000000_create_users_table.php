@@ -23,7 +23,9 @@ class CreateUsersTable extends Migration
             $table->integer('id_country');
             $table->integer('id_city');
             $table->string('phone_number', 30);
-            $table->string('general_number',30);
+            $table->string('email_code_verify',6)->nullable();
+            $table->timestamp('email_code_expires_at')->nullable();
+            $table->enum('role', ['1', '2'])->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
